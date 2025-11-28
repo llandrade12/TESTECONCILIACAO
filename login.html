@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - ESPARTANO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0f172a;
+      color: white;
+    }
+    .login-box {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #10b981;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>Login ESPARTANO</h2>
+  <input id="user" type="text" placeholder="Usuário">
+  <input id="pass" type="password" placeholder="Senha">
+  <button onclick="login()">Entrar</button>
+</div>
+
+<script>
+  const usuarios = {
+    admin: { user: "admin", senha: "0000", destino: "index.html" },
+    cadastro: { user: "cadastro", senha: "1234", destino: "data_entry.html" },
+    conciliacao: { user: "conc", senha: "2025", destino: "index.html" }
+  };
+
+  function login() {
+    const u = document.getElementById("user").value.trim();
+    const p = document.getElementById("pass").value.trim();
+
+    for (let tipo in usuarios) {
+      if (u === usuarios[tipo].user && p === usuarios[tipo].senha) {
+        localStorage.setItem("espartano_user", tipo);
+        window.location.href = usuarios[tipo].destino;
+        return;
+      }
+    }
+
+    alert("Usuário ou senha incorretos!");
+  }
+</script>
+
+</body>
+</html>

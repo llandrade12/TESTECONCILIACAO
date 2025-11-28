@@ -54,10 +54,16 @@
 </div>
 
 <script>
+  // --- CORREÇÃO APLICADA AQUI ---
   const usuarios = {
-    admin: { user: "admin", senha: "0000", destino: "index.html" },
-    cadastro: { user: "cadastro", senha: "1234", destino: "data_entry.html" },
-    conciliacao: { user: "conc", senha: "2025", destino: "index.html" }
+    // O destino do admin foi alterado de "index.html" para "conciliacao.html"
+    admin: { user: "admin", senha: "0000", destino: "conciliacao.html" }, 
+    
+    // O destino do cadastro já estava correto
+    cadastro: { user: "cadastro", senha: "1234", destino: "data_entry.html" }, 
+    
+    // O destino da conciliação também foi alterado para "conciliacao.html"
+    conciliacao: { user: "conc", senha: "2025", destino: "conciliacao.html" } 
   };
 
   function login() {
@@ -67,11 +73,13 @@
     for (let tipo in usuarios) {
       if (u === usuarios[tipo].user && p === usuarios[tipo].senha) {
         localStorage.setItem("espartano_user", tipo);
+        // Agora, o redirecionamento funcionará corretamente para todos os usuários
         window.location.href = usuarios[tipo].destino;
-        return;
+        return; // Encerra a função para evitar o alerta de erro
       }
     }
 
+    // Este alerta só será exibido se nenhum usuário/senha corresponder
     alert("Usuário ou senha incorretos!");
   }
 </script>

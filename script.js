@@ -738,3 +738,45 @@ document.addEventListener("DOMContentLoaded", () => {
     alternarTema();
   }
 });
+function calcularDividaFicha() { 
+    const texto = document.getElementById("fichaCalculo").value.trim();
+    const resultadoDiv = document.getElementById("resultadoDividaFicha");
+
+    if (!texto) {
+        alert("Cole a ficha primeiro");
+        return;
+    }
+
+    let total = 0;
+    let qtdMultas = 0;
+
+    const regex = /❌\s*([\d.]+(?:[.,]\d{1,2})?)/g;
+    let match;
+
+    while ((match = regex.exec(texto)) !== null) {
+        let valorStr = match[1];
+
+        valorStr = valorStr.replace(/\./g, "").replace(",", ".");
+
+        const valor = parseFloat(valorStr);
+
+        if (!isNaN(valor)) {
+            total += valor;
+            qtdMultas++;
+        }
+    }
+
+    resultadoDiv.style.display = "block";
+    resultadoDiv.innerHTML = `
+        <div class="diaria-header">
+            <strong> Resultado da Dívida</strong>
+        </div>
+
+        <p><strong>Total devido:</strong> R$ ${total.toFixed(2).replace('.', ',')}</p>
+        <p><strong>Multas encontradas:</strong> ${qtdMultas}</p>
+
+        <hr style="border-color: var(--border); margin: 6px 0;">
+
+        
+    `;
+}

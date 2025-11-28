@@ -1,21 +1,21 @@
 const tipoUsuario = localStorage.getItem("espartano_user");
 
 if (!tipoUsuario) {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
-if (window.location.pathname.includes("index") &&
+if (window.location.pathname.includes("conciliacao") &&
     tipoUsuario !== "conciliacao" &&
     tipoUsuario !== "admin") {
   alert("Acesso permitido apenas para Conciliação e Administrador!");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 if (window.location.pathname.includes("data_entry") &&
     tipoUsuario !== "cadastro" &&
     tipoUsuario !== "admin") {
   alert("Acesso permitido apenas para Cadastro e Administrador!");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 

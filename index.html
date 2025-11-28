@@ -430,14 +430,25 @@
             </button>
 
             <div id="resultadoDiaria" class="resultado-diaria">
-              <!-- Tabela de diárias será inserida aqui -->
+              
             </div>
 
             <button class="btn btn-copy" id="btnCopiarDiaria" onclick="copiarTabelaDiaria()" style="margin-top: 12px; width: 100%;">
               <i class="fa-solid fa-copy"></i> Copiar Tabela
             </button>
           </div>
-          <!-- FIM NOVA SEÇÃO -->
+          <textarea id="fichaCalculo" 
+    placeholder="Cole a ficha aqui (com O ❌ e os valores)..." 
+    style="width:100%; height:150px; margin-bottom:10px;"></textarea>
+
+  <button class="btn btn-add" onclick="calcularDividaFicha()" style="width:100%;">
+    <i class="fa-solid fa-equals"></i> Calcular Dívida
+  </button>
+
+  <div id="resultadoDividaFicha" class="resultado-diaria" 
+       style="display:none; margin-top:12px;"></div>
+</div>
+        
           <div class="resumo-item">
             <span>Data:</span>
             <strong id="dataAtual">--/--/----</strong>
@@ -470,10 +481,11 @@
     </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <!-- Biblioteca de Máscaras -->
+ 
   <script src="https://unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
   
   <script src="gerar_diaria.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>
